@@ -36,10 +36,19 @@ public class MovieController {
 	@Autowired
 	private MovieRepository mr;
 	@GetMapping("/movie")
-	public String getWelcomePage() {
-		String msg= "{\"movieCreation\":\"movie/create\""
-				+ "\",\"\"movieFind\":\"movie/find\",}";
-		return msg;
+	public Map<String,String> getWelcomePage() {
+		Map<String,String> map=new HashMap<String,String>();
+		map.put("HOME PAGE","localhost:8080/movie ");
+		map.put("findAll", "localhost:8080/movie/find");
+		map.put("findById", "localhost:8080/movie/find/id");
+		map.put("create", "localhost:8080/movie/create");
+		map.put("update", "localhost:8080/movie/update/id");
+		map.put("partial update(PATCH REQUEST)","localhost:8080/movie/changes/id");
+		map.put("delete","localhost:8080/movie/delete/id");
+		
+		return map;
+	
+		
 	}
 	
 	@GetMapping("/movie/find")

@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 
@@ -35,11 +36,12 @@ public class Movie {
 	private String category;
 	
 	@Column(nullable=false)
-	@Min(value=1,message = "ratings are mandatory abobe 0")
+	@Min(value=1,message = "ratings are mandatory above 0")
+	@Max(value=5,message="ratings are mandatory less than equal to 5")
 	private int ratings;
 	
 	@Column(nullable=false)
-	@NotBlank(message = "createdBy  is mandatorSSy")
+	@NotBlank(message = "createdBy  is mandatory")
 	private String createdBy;
 	
 	@Column(nullable=false)
